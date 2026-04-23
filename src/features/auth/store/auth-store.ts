@@ -11,22 +11,16 @@ type AuthState = {
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-    user : null,
+    user: null,
     isAuthenticated: false,
     isBootstrapping: true,
 
-    setUser: (user) => 
-        set({
-            user,
-            isAuthenticated: !!user,
-        }),
-    setBootstrapping: (value) => 
-        set({
-            isBootstrapping: value,
-        }),
-    clearAuth: () => 
-        set({
-            user: null,
-            isAuthenticated: false,
-        })
+    setUser: (user) =>
+        set({ user, isAuthenticated: !!user }),
+
+    setBootstrapping: (value) =>
+        set({ isBootstrapping: value }),
+
+    clearAuth: () =>
+        set({ user: null, isAuthenticated: false }),
 }))

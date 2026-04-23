@@ -35,11 +35,11 @@ export function LoginPage() {
     async function onSubmit(values: LoginFormValues) {
         try {
             setServerError('')
-
             const response = await loginApi(values)
-            setUser(response.data)
+            setUser(response.data) // Cookie đã được set tự động bởi browser
+            // Xóa hết phần lấy accessToken - không cần nữa
 
-            const redirectTo = (location.state as { from?: { pathname?: string } } | null)?.from?.pathname
+            const redirectTo = (location.state as any)?.from?.pathname
             navigate(redirectTo || '/projects', { replace: true })
         } catch (error: any) {
             setServerError(
