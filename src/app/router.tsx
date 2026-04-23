@@ -9,7 +9,7 @@ import { ProjectDashboardPage } from '../features/dashboard/pages/project-dashbo
 import { ProtectedRoute } from '../components/common/protected-route'
 import { GuestRoute } from '../components/common/guest-route'
 import { AppLayout } from '../components/layouts/app-layout'
-
+import { ProjectMembersPage } from '../features/projects/pages/project-members-page'
 export function AppRouter() {
   return (
     <Routes>
@@ -27,6 +27,7 @@ export function AppRouter() {
           <Route path="/projects/:projectId/tasks" element={<TasksPage />} />
           <Route path="/projects/:projectId/tasks/:taskId" element={<TaskDetailPage />} />
           <Route path="/projects/:projectId/dashboard" element={<ProjectDashboardPage />} />
+          <Route path="/projects/:projectId/members" element={<ProjectMembersPage />} />
         </Route>
       </Route>
     </Routes>
