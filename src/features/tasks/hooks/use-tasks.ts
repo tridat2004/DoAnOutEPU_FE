@@ -46,7 +46,10 @@ export function useCreateTask(projectId: string) {
         mutationFn: createTaskApi.bind(null, projectId),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['tasks', projectId] })
-        }
+            queryClient.invalidateQueries({ queryKey: ['board', projectId] })
+            queryClient.invalidateQueries({ queryKey: ['timeline', projectId] })
+            queryClient.invalidateQueries({ queryKey: ['dashboard', projectId] })
+        },
     })
 }
 
@@ -59,6 +62,9 @@ export function useUpdateTask(projectId: string, taskId: string) {
             queryClient.invalidateQueries({ queryKey: ['tasks', projectId] })
             queryClient.invalidateQueries({ queryKey: ['task-detail', projectId, taskId] })
             queryClient.invalidateQueries({ queryKey: ['task-histories', projectId, taskId] })
+            queryClient.invalidateQueries({ queryKey: ['board', projectId] })
+            queryClient.invalidateQueries({ queryKey: ['timeline', projectId] })
+            queryClient.invalidateQueries({ queryKey: ['dashboard', projectId] })
         },
     })
 }
@@ -79,6 +85,7 @@ export function useCreateTaskComment(projectId: string, taskId: string) {
             createTaskCommentApi(projectId, taskId, payload),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['task-comments', projectId, taskId] })
+            queryClient.invalidateQueries({ queryKey: ['dashboard', projectId] })
         },
     })
 }

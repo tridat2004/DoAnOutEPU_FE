@@ -23,8 +23,8 @@ export function useUpdateTaskStatus(projectId: string) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['board', projectId] })
       queryClient.invalidateQueries({ queryKey: ['tasks', projectId] })
-      queryClient.invalidateQueries({ queryKey: ['dashboard', projectId] })
       queryClient.invalidateQueries({ queryKey: ['timeline', projectId] })
+      queryClient.invalidateQueries({ queryKey: ['dashboard', projectId] })
     },
   })
 }

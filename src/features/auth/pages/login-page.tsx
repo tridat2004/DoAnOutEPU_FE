@@ -39,8 +39,8 @@ export function LoginPage() {
             setUser(response.data) // Cookie đã được set tự động bởi browser
             // Xóa hết phần lấy accessToken - không cần nữa
 
-            const redirectTo = (location.state as any)?.from?.pathname
-            navigate(redirectTo || '/projects', { replace: true })
+            const redirectTo = (location.state as { from?: { pathname?: string } } | null)?.from?.pathname
+            navigate(redirectTo || '/hub/home', { replace: true })
         } catch (error: any) {
             setServerError(
                 error?.response?.data?.message || 'Dang nhap that bai. Vui long thu lai.',
